@@ -1,11 +1,18 @@
 import discord
+from discord.ext import commands
 
-token = ''
-bot = discord.bot(PREFIX = "!")
+bot = commands.Bot(command_prefix='!')
 
-class bot(bot):
-	async def boop(ctx):
-		print('boop')
-		em = discord.Embed(title="BOOP?!", description="No u",color=discord.Colour(0xffffff))	
-		await ctx.send(embed=em)
-bot.run(token)
+@bot.event
+async def on_ready():
+	print ('logged in as')
+	print( bot.user.name)
+	prin('---------')
+
+@bot.command()
+async def boop(ctx)
+	embed=discord.Embed(color=Discord.Colour(0xFFFFFF))
+	embed.add_field(name"Boop", value="Yes", inline false)
+	ctx.send(embed=embed)
+	
+bot.run('')
