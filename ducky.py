@@ -33,7 +33,7 @@ class DuckyClient(Bot): # This doesn't work... The extra prefixes don't get adde
     #self.db = db
     self.counter = Counter ()
     self.uptime = datetime.datetime.now()
-    self.logger = logging.getLogger('solyx')
+    self.logger = logging.getLogger('ducky')
     self.default_cogs = kwargs["default_cogs"]
 
   def init_events(self):
