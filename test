@@ -1,0 +1,11 @@
+import discord
+
+token = ''
+bot = discord.bot(PREFIX = "!")
+
+class bot(bot):
+	async def boop(ctx):
+		print('boop')
+		em = discord.Embed(title="BOOP?!", description="No u",color=discord.Colour(0xffffff))	
+		await ctx.send(embed=em)
+bot.run(token)
