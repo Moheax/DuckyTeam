@@ -10,7 +10,7 @@ async def on_ready():
 	prin('---------')
 
 @bot.command()
-async def boop(ctx)
+async def boop(ctx):
 	embed=discord.Embed(color=Discord.Colour(0xFFFFFF))
 	embed.add_field(name"Boop", value="Yes", inline false)
 	ctx.send(embed=embed)
