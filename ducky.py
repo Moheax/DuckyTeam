@@ -8,7 +8,6 @@ from collections import Counter
 import datetime
 from discord.ext.commands import AutoShardedBot as Bot
 
-
 def get_prefix_callable(defaults):
   def callable(bot, msg):
     prefixes = ['{}'.format(bot.user.mention), '<@!{}>'.format(bot.user.id)]
@@ -31,7 +30,7 @@ class DuckyClient(Bot): # This doesn't work... The extra prefixes don't get adde
 
     super().__init__(command_prefix=callable)
 
-    self.db = db
+    #self.db = db
     self.counter = Counter ()
     self.uptime = datetime.datetime.now()
     self.logger = logging.getLogger('solyx')
