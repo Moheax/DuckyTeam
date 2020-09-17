@@ -8,6 +8,23 @@ from collections import Counter
 import datetime
 from discord.ext.commands import AutoShardedBot as Bot
 
+
+def get_prefix_callable(defaults):
+  def callable(bot, msg):
+    prefixes = ['{}'.format(bot.user.mention), '<@!{}>'.format(bot.user.id)]
+
+    if msg.guild:
+      try:
+        server = db.servers.find_one({ "_id": str(msg.guild.id) })
+        if server:
+          for pf in server["prefixes"]:
+            prefixes.append(pf)
+      except:
+        pass
+    return defaults + prefixes
+
+  return callable
+
 class DuckyClient(Bot): # This doesn't work... The extra prefixes don't get added.
   def __init__(self, *args, **kwargs):
     callable = get_prefix_callable(kwargs["default_prefixes"])
