@@ -1,3 +1,13 @@
+import discord
+import os
+import importlib
+import logging
+#from inspect import getmembers, isfunction
+#from utils.db import db
+from collections import Counter 
+import datetime
+from discord.ext.commands import AutoShardedBot as Bot
+
 class DuckyClient(Bot): # This doesn't work... The extra prefixes don't get added.
   def __init__(self, *args, **kwargs):
     callable = get_prefix_callable(kwargs["default_prefixes"])
