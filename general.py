@@ -12,24 +12,23 @@ import glob
 import aiohttp
 
 class general(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
+	def __init__(self, bot):
+		self.bot = bot
 
-    @commands.command()
-    async def ping(self, ctx):
+	@commands.command()
+	async def ping(self, ctx):
 
-        embed = discord.Embed(description = '{}ms'.format(self.bot.latency * 1000), colour=0xb3d4fc)
-        await ctx.send(embed=embed)
-        
-    @commands.command()
-	
+		embed = discord.Embed(description = '{}ms'.format(round(self.bot.latency * 1000)), colour=0xb3d4fc)
+		await ctx.send(embed=embed)
+		
+	@commands.command()
 	async def cogs(self, ctx):
 		"""Shows all parts of the bot."""
 		modules = [x.replace(".py", "") for x in os.listdir("cogs") if ".py" in x]
 		loaded = [c.__module__.split(".")[-1] for c in self.bot.cogs.values()]
 		unloaded = [c.split(".")[-1] for c in modules if c.split(".")[-1] not in loaded]
 		total_modules = len(modules)
-		embed=discord.Embed(title=f"Solyx dashboard | Cogs ({total_modules})", colour=discord.Colour(0xfffffc))
+		embed=discord.Embed(title=f"ducky dashboard | Cogs ({total_modules})", colour=discord.Colour(0xb3d4fc))
 		embed.add_field(name=f"✅ Loaded ({len(loaded)})", value=", ".join(loaded) if loaded != [] else "None", inline=False)
 		embed.add_field(name=f"⛔ Unloaded ({len(unloaded)})", value="\n".join(unloaded) if unloaded != [] else "None", inline=False)
 		try:
@@ -55,7 +54,7 @@ class general(commands.Cog):
 					except Exception as e:
 						print(f'{e}')
 						pass
-			embed=discord.Embed(title="Cogs Loaded", description=msg, colour=0xfffffc)
+			embed=discord.Embed(title="Cogs Loaded", description=msg, colour=0xb3d4fc)
 			try:
 				await ctx.send(embed=embed)
 			except:
@@ -74,7 +73,7 @@ class general(commands.Cog):
 				except Exception as e:
 					print(f'{e}')
 					return
-			embed=discord.Embed(title="Cog Loaded", description="`{}`".format(module), colour=0xfffffc)
+			embed=discord.Embed(title="Cog Loaded", description="`{}`".format(module), colour=0xb3d4fc)
 			try:
 				await ctx.send(embed=embed)
 			except:
@@ -98,7 +97,7 @@ class general(commands.Cog):
 					except Exception as e:
 						print(f'{e}')
 						pass
-			embed=discord.Embed(title="Cogs Unloaded", description=msg, colour=0xfffffc)
+			embed=discord.Embed(title="Cogs Unloaded", description=msg, colour=0xb3d4fc)
 			try:
 				await ctx.send(embed=embed)
 			except:
@@ -116,7 +115,7 @@ class general(commands.Cog):
 					return
 				except:
 					return
-			embed=discord.Embed(title="Cog Unloaded", description="`{}`".format(module), colour=0xfffffc)
+			embed=discord.Embed(title="Cog Unloaded", description="`{}`".format(module), colour=0xb3d4fc)
 			try:
 				await ctx.send(embed=embed)
 			except:
@@ -140,7 +139,7 @@ class general(commands.Cog):
 					except Exception as e:
 						print(f'{e}')
 						pass
-			embed=discord.Embed(title="Cogs Reloaded", description=msg, colour=0xfffffc)
+			embed=discord.Embed(title="Cogs Reloaded", description=msg, colour=0xb3d4fc)
 			try:
 				await ctx.send(embed=embed)
 			except:
@@ -158,7 +157,7 @@ class general(commands.Cog):
 					return
 				except:
 					return
-			embed=discord.Embed(title="Cog Reloaded", description="`{}`".format(module), colour=0xfffffc)
+			embed=discord.Embed(title="Cog Reloaded", description="`{}`".format(module), colour=0xb3d4fc)
 			try:
 				await ctx.send(embed=embed)
 			except:
@@ -167,5 +166,5 @@ class general(commands.Cog):
 				except:
 					return
 def setup(bot):
-    c = general(bot) 
-    bot.add_cog(c)
+	c = general(bot) 
+	bot.add_cog(c)
