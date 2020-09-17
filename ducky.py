@@ -1,4 +1,4 @@
-class SolyxClient(Bot): # This doesn't work... The extra prefixes don't get added.
+class DuckyClient(Bot): # This doesn't work... The extra prefixes don't get added.
   def __init__(self, *args, **kwargs):
     callable = get_prefix_callable(kwargs["default_prefixes"])
 
